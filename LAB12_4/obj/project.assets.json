@@ -1,0 +1,131 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Helpers/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Helpers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Helpers.dll": {}
+        }
+      },
+      "l10/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Helpers": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/l10.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/l10.dll": {}
+        }
+      },
+      "LAB12_3/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "l10": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LAB12_3.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LAB12_3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Helpers/1.0.0": {
+      "type": "project",
+      "path": "../Helpers/Helpers.csproj",
+      "msbuildProject": "../Helpers/Helpers.csproj"
+    },
+    "l10/1.0.0": {
+      "type": "project",
+      "path": "../l10/l10.csproj",
+      "msbuildProject": "../l10/l10.csproj"
+    },
+    "LAB12_3/1.0.0": {
+      "type": "project",
+      "path": "../LAB12_3/LAB12_3.csproj",
+      "msbuildProject": "../LAB12_3/LAB12_3.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "LAB12_3 >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "V:\\lab13\\lab13\\LAB12_4\\LAB12_4.csproj",
+      "projectName": "LAB12_4",
+      "projectPath": "V:\\lab13\\lab13\\LAB12_4\\LAB12_4.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "V:\\lab13\\lab13\\LAB12_4\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "V:\\lab13\\lab13\\LAB12_3\\LAB12_3.csproj": {
+              "projectPath": "V:\\lab13\\lab13\\LAB12_3\\LAB12_3.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.414\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

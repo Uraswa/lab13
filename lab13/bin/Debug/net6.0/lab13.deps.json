@@ -1,0 +1,76 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "lab13/1.0.0": {
+        "dependencies": {
+          "LAB12_4": "1.0.0",
+          "l10": "1.0.0"
+        },
+        "runtime": {
+          "lab13.dll": {}
+        }
+      },
+      "Helpers/1.0.0": {
+        "runtime": {
+          "Helpers.dll": {}
+        }
+      },
+      "l10/1.0.0": {
+        "dependencies": {
+          "Helpers": "1.0.0"
+        },
+        "runtime": {
+          "l10.dll": {}
+        }
+      },
+      "LAB12_3/1.0.0": {
+        "dependencies": {
+          "l10": "1.0.0"
+        },
+        "runtime": {
+          "LAB12_3.dll": {}
+        }
+      },
+      "LAB12_4/1.0.0": {
+        "dependencies": {
+          "LAB12_3": "1.0.0"
+        },
+        "runtime": {
+          "LAB12_4.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "lab13/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Helpers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "l10/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LAB12_3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LAB12_4/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
