@@ -11,7 +11,7 @@ public class Journal
     /// <summary>
     /// Список изменений
     /// </summary>
-    private List<JournalEntry> _history = new List<JournalEntry>();
+    public readonly List<JournalEntry> History = new List<JournalEntry>();
 
     /// <summary>
     /// Добавление события в историю
@@ -24,7 +24,7 @@ public class Journal
         if (source is not MyObservableCollection<Game> srcObj) throw new ArgumentException("Источник должен быть типа MyObservableCollection<Game>");
         if (args == null) throw new ArgumentException("Аргументы не могут быть null");
         if (args.Object == null) throw new ArgumentException("Объект не может быть null!");
-        _history.Add(new JournalEntry(
+        History.Add(new JournalEntry(
             srcObj.Name,
             args.ChangeType,
             args.Object.ToString()
@@ -37,9 +37,9 @@ public class Journal
     [ExcludeFromCodeCoverage]
     public void PrintChanges()
     {
-        if (_history.Count == 0) Console.WriteLine("Журнал изменений пуст");
+        if (History.Count == 0) Console.WriteLine("Журнал изменений пуст");
         int counter = 1;
-        foreach (var journalEntry in _history)
+        foreach (var journalEntry in History)
         {
             Console.WriteLine("----Событие #" + counter + "----");
             Console.WriteLine(journalEntry.ToString());

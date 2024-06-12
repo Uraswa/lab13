@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using l10;
 using Lab13;
+using Laba10;
 
 namespace LAB13_TESTS;
 
@@ -115,7 +116,7 @@ public class Tests
         
         tree.CollectionReferenceChanged += (source, args) =>
         {
-            Assert.IsTrue(args.Object.Equals(key));
+            Assert.IsTrue(args.Object.ToString() == key.ToString() + "\nизменены на:\n" + value.ToString());
         };
         
         tree[key] = value;
@@ -147,6 +148,7 @@ public class Tests
     public void TestJournalEmptyConstructor()
     {
         var journal = new Journal();
+        Assert.IsTrue(journal.History.Count == 0);
     }
     
     [Test]
@@ -187,6 +189,9 @@ public class Tests
         var args = new CollectionHandlerEventArgs("collection", new Game());
         
         journal.AddHistoryItem(collection, args);
+        Assert.IsTrue(journal.History[0].ChangeType == "collection");
+        Assert.IsTrue(journal.History[0].CollectionName == "test");
+        Assert.IsTrue(journal.History[0].ObjectData == (new Game()).ToString());
     }
 
     [Test]
@@ -195,6 +200,98 @@ public class Tests
         var journalEntry = new JournalEntry("1", "2", "3");
         
         Assert.IsTrue(journalEntry.ToString() == $"Название коллекции: 1 \nТип изменения: 2 \nДанные объекта: 3");
+    }
+
+    [Test]
+    public void TestGameObjectsEqual()
+    {
+        var game = new Game("1", 1, 1, new Game.IdNumber(1));
+        var gameVideo = new VideoGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 1);
+        var gameVR = new VRGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 1, false, false);
+        Assert.IsFalse(game.Equals(gameVideo));
+        Assert.IsFalse(game.Equals(gameVR));
+        Assert.IsFalse(gameVideo.Equals(gameVR));
+        Assert.IsFalse(gameVideo.Equals(game));
+        Assert.IsFalse(gameVR.Equals(game));
+        Assert.IsFalse(gameVR.Equals(gameVideo));
+        
+        Assert.IsTrue(game.Equals(game));
+        Assert.IsTrue(gameVR.Equals(gameVR));
+        Assert.IsTrue(gameVideo.Equals(gameVideo));
+    }
+
+    /// <summary>
+    /// Тестирование 4 и 2 пункта и на всякий случай обратного случая.
+    /// </summary>
+    [Test]
+    public void RemoveDifferentTypesRemove()
+    {
+        Game[] testData = new Game[]
+        {
+            new Game("1", 1, 1, new Game.IdNumber(1)),
+            new VideoGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 1),
+            new VideoGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 2),
+            new VRGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 1, false, false),
+            new VRGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 2, false, false)
+        };
+        for (int i = 0; i < testData.Length; i++)
+        {
+            var tree = new MyObservableCollection<Game>("test", 0);
+            
+            for (int j = 0; j < testData.Length; j++)
+            {
+                if (j != i) tree.Add(testData[j]);
+            }
+            
+            tree.CollectionCountChanged += (source, args) =>
+            {
+                Assert.IsTrue(false);
+            };
+            
+            Assert.IsTrue(tree.Length == testData.Length - 1);
+            Assert.IsFalse(tree.Remove(testData[i]));
+            Assert.IsFalse(tree.Contains(testData[i]));
+        }
+    }
+    
+    /// <summary>
+    /// Тестирование 7 и 8 пункта и на всякий случай обратного случая.
+    /// </summary>
+    [Test]
+    public void RemoveDifferentTypesUpdate()
+    {
+        Game[] testData = new Game[]
+        {
+            new Game("1", 1, 1, new Game.IdNumber(1)),
+            new VideoGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 1),
+            new VideoGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 2),
+            new VRGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 1, false, false),
+            new VRGame("1", 1, 1, new Game.IdNumber(1), Device.Console, 2, false, false)
+        };
+        for (int i = 0; i < testData.Length; i++)
+        {
+            var tree = new MyObservableCollection<Game>("test", 0);
+            
+            for (int j = 0; j < testData.Length; j++)
+            {
+                if (j != i) tree.Add(testData[j]);
+            }
+            
+            Assert.IsTrue(tree.Length == testData.Length - 1);
+            
+            tree.CollectionCountChanged += (source, args) =>
+            {
+                Assert.IsTrue(false);
+            };
+
+            tree.CollectionReferenceChanged += (source, args) =>
+            {
+                Assert.IsTrue(false);
+            };
+
+            Assert.Catch<ArgumentException>(() => tree[testData[i]] = testData[0], "Элемент с данным ключом не найден");
+            
+        }
     }
     
     

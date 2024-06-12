@@ -12,8 +12,8 @@ public static class Program
 
     public static void Main()
     {
-        _collection1 = new MyObservableCollection<Game>("Collection 1", 10);
-        _collection2 = new MyObservableCollection<Game>("Collection 2", 10);
+        _collection1 = new MyObservableCollection<Game>("Collection 1", 0);
+        _collection2 = new MyObservableCollection<Game>("Collection 2", 0);
 
         var journal1 = new Journal();
         var journal2 = new Journal();
@@ -52,7 +52,15 @@ public static class Program
                 case 2: // добавить элемент в дерево
                     avlTree = GetCollection();
                     var element = GetUserGame();
-                    avlTree.Add(element);
+                    
+                    if (avlTree.Contains(element))
+                    {
+                        Console.WriteLine("Элемент уже существует в дереве");
+                    }
+                    else
+                    {
+                        avlTree.Add(element);
+                    }
                     break;
                 case 3: // добавить n случайных элементов в дерево
                     AddNRandomElementsToTree();
@@ -152,6 +160,11 @@ public static class Program
         {
             Console.WriteLine("Введите новое значение");
             var val = GetUserGame();
+            if (collection.Contains(val))
+            {
+                Console.WriteLine("Ошибка, такой элемент уже присутствует в коллекции!");
+                return;
+            }
             collection[key] = val;
             Console.WriteLine("Операция произведена успешно");
         }

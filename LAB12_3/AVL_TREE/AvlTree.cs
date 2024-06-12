@@ -139,22 +139,26 @@ public class AvlTree<T> where T : IComparable, ICloneable
      * @param val - значение для добавления
      * @return возвращает ноду для замены.
      */
-    AvlTreeNode<T> AddNode(AvlTreeNode<T> node, T val)
+    AvlTreeNode<T> AddNode(AvlTreeNode<T> node, T val, ref bool added)
     {
         if (node == null)
         {
             Count++;
+            added = true;
             return new AvlTreeNode<T>(val, null, null, 1);
         }
 
         int comparisonResult = val.CompareTo(node.Value);
 
         if (comparisonResult < 0)
-            node.Left = AddNode(node.Left, val); // нужно добавить влево
+            node.Left = AddNode(node.Left, val, ref added); // нужно добавить влево
         else if (comparisonResult > 0)
-            node.Right = AddNode(node.Right, val); //нужно добавить вправо
+            node.Right = AddNode(node.Right, val, ref added); //нужно добавить вправо
         else
+        {
+            added = false;
             return node; //дубликаты запрещены
+        }
 
         UpdateHeight(node); //перерасчет высоты текущей ветви
 
@@ -316,9 +320,11 @@ public class AvlTree<T> where T : IComparable, ICloneable
      * <summary>Вставить узел в дерево</summary>
      * @param val значение
      */
-    public void Insert(T val)
+    public bool Insert(T val)
     {
-        _root = AddNode(_root, (T)val.Clone());
+        bool added = false;
+        _root = AddNode(_root, (T)val.Clone(), ref added);
+        return added;
     }
 
     /**

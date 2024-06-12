@@ -65,8 +65,8 @@ public class MyObservableCollection<T> : AvlTreeNet<T> where T : IComparable, IC
             Remove(key);
             Add(value);
             //вызов ивента изменения ссылки
-            OnCollectionReferenceChanged(this, new CollectionHandlerEventArgs("Изменение ссылки", key));
-        }
+            OnCollectionReferenceChanged(this, new CollectionHandlerEventArgs("Изменение ссылки", key.ToString() + "\nизменены на:\n" + value.ToString()));
+        } 
     }
 
     /// <summary>
@@ -75,8 +75,8 @@ public class MyObservableCollection<T> : AvlTreeNet<T> where T : IComparable, IC
     /// <param name="item">Элемент для добавления</param>
     public override void Add(T item)
     {
-        base.Add(item);
-        OnCollectionCountChanged(this, new CollectionHandlerEventArgs("Добавление", item));
+        if (base.Insert(item))
+            OnCollectionCountChanged(this, new CollectionHandlerEventArgs("Добавление", item));
     }
 
     /// <summary>

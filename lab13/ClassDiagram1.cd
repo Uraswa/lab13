@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Lab13.CollectionHandlerEventArgs">
+    <Position X="0.5" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CollectionHandlerEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lab13.Journal">
+    <Position X="5.5" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Journal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lab13.JournalEntry">
+    <Position X="3" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAIAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JournalEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lab13.MyObservableCollection&lt;T&gt;">
+    <Position X="7.5" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAAAAAAAAAAIICAAABAVAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>MyObservableCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LAB12_4.AvlTreeNET.AvlTreeNet&lt;T&gt;">
+    <Position X="8" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LAB12_3.AVL_TREE.AvlTree&lt;T&gt;">
+    <Position X="11" Y="0.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.EventArgs">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Delegate Name="Lab13.CollectionHandler">
+    <Position X="1" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MyObservableCollection.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
